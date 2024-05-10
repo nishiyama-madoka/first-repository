@@ -20,6 +20,6 @@ public class Person implements Serializable {
 	
 	private Date createdAt;
 	
-	private Data updatedAt;
+	private Date updatedAt;
 	
 }
