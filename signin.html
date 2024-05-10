@@ -23,21 +23,31 @@ content="text/html; charset=UTF-8">
 
 <h3>新規登録</h3>
 
-<form action="#">
+<form th:action="@{/signin}" th:object="${userAddRequest}" th:method="post">
+	<style>.err { color:red }</style>
 	<div class="input">
 	  <label class="name">氏名</label>
-	  <input type="text" class="input">
+	  <input type="text" th:field="*{name}" class="input">
+	  <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="err"/>
+	  	    <label class="text-danger" th:text="${error}"></label>
+	  	</div>
 	</div>
 	<div class="input">
 	  <label class="mail">メールアドレス</label>
-	  <input type="text" class="input">
+	  <input type="text" th:field="*{email}" class="input">
+	  <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:errorclass="err"/>
+	  	    <label class="text-danger" th:text="${error}"></label>
+	  	</div>
 	</div>
 	<div class="input">
 	  <label class="pass">パスワード</label>
-	  <input type="password" class="input">
+	  <input type="password" th:field="*{password}" class="input">
+	  <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="err"/>
+	  	    <label class="text-danger" th:text="${error}"></label>
+	  	</div>
 	</div>
 	<div class="btn">
-	  <a class="btn-blue" href="/top">登録する</a>
+	  <input type="submit" value="登録する" class="btn-blue" >
 	</div>
 </form>
 
