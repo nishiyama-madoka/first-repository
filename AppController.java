@@ -34,10 +34,10 @@ public class AppController {
 	        return "/top";
 	    }
 	
-	@RequestMapping("/signin")
-	public String signin() {
-		return "signin";
-	}
+	 @GetMapping(value = "/login")
+	 public String displaylogin() {
+		 return "/login";
+	 }
 	
 	//エラー文
 	 @RequestMapping(value = "/signin", method = RequestMethod.POST)
@@ -56,5 +56,11 @@ public class AppController {
 	// ユーザー情報が登録できた場合
      profileService.save(userRequest);
      return "redirect:/top"; //トップ画面へ遷移するように変更
-	
+}
+
+@PostMapping
+	 String postLogin() {
+		 return "/top";
+	 }
+
 }
