@@ -34,10 +34,11 @@ public class AppController {
 	        return "/top";
 	    }
 	
-	 @GetMapping(value = "/login")
-	 public String displaylogin() {
-		 return "/login";
-	 }
+	 //これ入れると「ログインエラーの部分が動かなくなる」
+	 //@GetMapping(value = "/login")
+	 //public String displaylogin() {
+		 //return "/login";
+	 //}
 	
 	//エラー文
 	 @RequestMapping(value = "/signin", method = RequestMethod.POST)
@@ -57,6 +58,21 @@ public class AppController {
      profileService.save(userRequest);
      return "redirect:/top"; //トップ画面へ遷移するように変更
 }
+
+//ログインエラー
+	 @RequestMapping(value = "/login", method = RequestMethod.GET)
+	 	 @PreAuthorize("permitAll")
+	 	 public ModelAndView login(ModelAndView mav,
+	 			 @RequestParam(value="error", required=false)String error) {
+	 		 mav.setViewName("login");
+	 		 System.out.println();
+	 		 if (error != null) {
+	 			 mav.addObject("msg", "メールアドレス、もしくはパスワードが間違っています");
+	 		 } else {
+	 			 mav.addObject("/top");
+	 		 }
+	 		 return mav;
+	 }
 
 @PostMapping
 	 String postLogin() {
