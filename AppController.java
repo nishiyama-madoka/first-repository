@@ -34,11 +34,11 @@ public class AppController {
 	        return "/top";
 	    }
 	
-	 //これ入れると「ログインエラーの部分が動かなくなる」
-	 //@GetMapping(value = "/login")
-	 //public String displaylogin() {
-		 //return "/login";
-	 //}
+	 //これ入れると「ログインエラーのPOSTをGETにしたとき動かなくなる」
+	 @GetMapping(value = "/login")
+	 public String displaylogin() {
+		 return "/login";
+	 }
 	
 	//エラー文
 	 @RequestMapping(value = "/signin", method = RequestMethod.POST)
@@ -60,7 +60,7 @@ public class AppController {
 }
 
 //ログインエラー
-	 @RequestMapping(value = "/login", method = RequestMethod.GET)
+	 @RequestMapping(value = "/login", method = RequestMethod.POST)
 	 	 @PreAuthorize("permitAll")
 	 	 public ModelAndView login(ModelAndView mav,
 	 			 @RequestParam(value="error", required=false)String error) {
