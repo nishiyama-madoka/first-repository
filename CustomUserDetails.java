@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.User;  // Spring Security�
 
 public class CustomUserDetails extends User {
 
-	public CustomUserDetails(String username, String password, Collection<? extends GrantedAuthority> authorities) {
-        super(username, password, authorities);  // 親クラスのコンストラクタを呼び出してインスタンスを初期化
+	public CustomUserDetails(String email, String password, Collection<? extends GrantedAuthority> authorities) {
+        super(email, password, authorities);  // 親クラスのコンストラクタを呼び出してインスタンスを初期化
     }
 	
 }
