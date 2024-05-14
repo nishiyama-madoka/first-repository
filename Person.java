@@ -21,4 +21,7 @@ public class Person implements Serializable {
 	private Date createdAt;
 	
 	private Date updatedAt;
+
+	public record UserAccount(String email,String password) {}
+	
 }
