@@ -10,4 +10,14 @@
         VALUES
             (#{email}, #{name}, #{password},CURRENT_TIMESTAMP,  CURRENT_TIMESTAMP)
     </insert>
+<select id="getAccount" resultType="com.example.profileapp.Person.UserAccount">
+        SELECT
+            email,
+            password
+         FROM
+            users
+         WHERE
+            email = #{email}   
+    </select>
+        
    </mapper>
