@@ -14,5 +14,6 @@ public interface ProfileMapper {
      * @param userRequest 登録用リクエストデータ
      */
     void save(UserAddRequest userRequest);
-	
+
+	public UserAccount getAccount(String email);
 }
