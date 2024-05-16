@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.PortFolioMapper">
+
+ <insert id="save">
+        INSERT INTO users
+            (email, name,  password, created_at, updated_at)
+        VALUES
+            (#{email}, #{name}, #{password},CURRENT_TIMESTAMP,  CURRENT_TIMESTAMP)
+    </insert>
+
+        <select id="getAccount" resultType="com.example.entity.UserAccount">
+        SELECT
+            email,
+            password
+         FROM
+            users
+         WHERE
+            email = #{email}   
+    </select>
+        
+   </mapper>
