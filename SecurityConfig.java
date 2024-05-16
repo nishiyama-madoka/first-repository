@@ -45,7 +45,16 @@ public UserDetailsManager userDetailsManager() {
 	
 }
 
-
+@Autowired
+public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+    auth.jdbcAuthentication()
+            .dataSource(dataSource)
+            .usersByUsernameQuery(
+                    "select email, password, self_introduction from users where email = ?")
+            .authoritiesByUsernameQuery(
+                    "select password, email from users where email = ?")
+            .passwordEncoder(new BCryptPasswordEncoder());
+}
 
 @Bean
 public PasswordEncoder passwordEncoder() {
