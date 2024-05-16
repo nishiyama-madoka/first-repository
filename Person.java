@@ -27,6 +27,16 @@ public class Person implements Serializable {
 	
 	private Date updatedAt;
 
+	private boolean enabled;
+
 	public record UserAccount(String email,String password) {}
+
+	public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 	
 }
